@@ -8,22 +8,14 @@ const ChatMessage = ({message, sender}) => {
     // const sender = props.sender;
     // const {message, sender} = props;
 
-    if(sender === "chatBot"){
-        return (
-            <div>
-                <div>
-                <img alt="user placeholder" src={bot} width="50"/>
-                {message}
-            </div>
-            </div>
-        )
-    }
-    else{
-        return (
-            <div>
-                {message}
-                <img alt="user placeholder" src={user} width="50"/>
-            </div>
+    
+    return (
+        <div>
+            {/* if sender equals robot then ouput robot image */}
+            {sender === 'robot' && <img alt="Bot placeholder" src={bot} width="50"/>}
+            {message}
+            {sender === 'user' && <img alt="User placeholder" src={user} width="50"/>}
+        </div>
         );
     }
 }

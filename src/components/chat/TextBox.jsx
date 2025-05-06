@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import './TextBox.css';
 const TextBox = ({chatMessages, setChatMessages}) => {
 
     const [inputText, setInputText] = useState('');
 
+    
+    useEffect(() => {
+        console.log('updated');
+    }, [chatMessages]);
 
     function processMessage(event){
         // console.log(event.target.value);
@@ -37,9 +41,12 @@ const TextBox = ({chatMessages, setChatMessages}) => {
 
     const chats = chatMessages.map(
         m => <ChatMessage key={m.id} message={m.message} sender={m.sender}/>)
-
     return (
         <div className="chat-input-container">
+            <div className="chats-section">
+                {chats}
+            </div>
+            
             <input 
                 className="input-box"
                 onChange={processMessage} 
@@ -48,7 +55,6 @@ const TextBox = ({chatMessages, setChatMessages}) => {
                 size="30" 
                 />
             <button className="send-button" onClick={sendMessage}>Send</button>
-            {chats}
         </div>
     );
 

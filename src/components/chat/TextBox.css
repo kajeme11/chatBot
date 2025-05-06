@@ -1,16 +1,6 @@
-.send-button{
-    background-color: green;
-    color: aliceblue;
-    padding: 12px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-}
 
 .chat-input-container{
-    /* display: flex; */
+    display: contents;
 }
 
 .input-box{
@@ -20,5 +10,23 @@
     border-width: 1px;
     font-size: 15px;
     margin-bottom: 20px;
-    /* flex-grow: 1; */
+    max-width: 300px;
+}
+
+.chats-section{
+    flex-grow: 1; 
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.send-button{
+
+    background-color: green;
+    color: aliceblue;
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
 }

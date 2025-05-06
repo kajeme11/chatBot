@@ -1,9 +1,11 @@
+
 /* 
     align items control how the elements are displayed vertically
     by default align itesm, is stretch
     change to start so elements will not  stretch out
  */
-.bot-message{
+
+ .bot-message{
     display: flex;
     justify-content: baseline;
     align-items: start;
@@ -24,4 +26,13 @@
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 20px;
+
+}
+
+.message-profile{
+    width: 50px;
+}
+
+.chat-message-container{
+    margin-top: 20px;
 }

@@ -9,7 +9,9 @@ const TextBox = ({chatMessages, setChatMessages}) => {
     
     useEffect(() => {
         console.log(chatMessagesRef.current);
-        const container = chatMessagesRef.current
+        const container = chatMessagesRef.current;
+        console.log(container.scrollTop);
+        console.log(container.scrollHeight);
         if(container){
             container.scrollTop = container.scrollHeight;
         }
@@ -47,8 +49,8 @@ const TextBox = ({chatMessages, setChatMessages}) => {
     const chats = chatMessages.map(
         m => <ChatMessage key={m.id} message={m.message} sender={m.sender}/>)
     return (
-        <div className="chat-input-container" ref={chatMessagesRef}>
-            <div className="chats-section">
+        <div className="chat-input-container" >
+            <div className="chats-section" ref={chatMessagesRef}>
                 {chats}
             </div>
             

@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import './TextBox.css';
 const TextBox = ({chatMessages, setChatMessages}) => {
 
     const [inputText, setInputText] = useState('');
 
+    const chatMessagesRef = useRef(null);
     
     useEffect(() => {
-        console.log('updated');
+        console.log(chatMessagesRef.current);
+        const container = chatMessagesRef.current
+        if(container){
+            container.scrollTop = container.scrollHeight;
+        }
     }, [chatMessages]);
 
     function processMessage(event){
@@ -42,7 +47,7 @@ const TextBox = ({chatMessages, setChatMessages}) => {
     const chats = chatMessages.map(
         m => <ChatMessage key={m.id} message={m.message} sender={m.sender}/>)
     return (
-        <div className="chat-input-container">
+        <div className="chat-input-container" ref={chatMessagesRef}>
             <div className="chats-section">
                 {chats}
             </div>

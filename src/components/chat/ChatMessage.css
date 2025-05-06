@@ -1,0 +1,27 @@
+/* 
+    align items control how the elements are displayed vertically
+    by default align itesm, is stretch
+    change to start so elements will not  stretch out
+ */
+.bot-message{
+    display: flex;
+    justify-content: baseline;
+    align-items: start;
+
+}
+
+.user-message{
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+.chat-text{
+    background-color: rgb(238, 237, 238);
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10%;
+    padding: 10px 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}

@@ -1,16 +1,55 @@
+import { useState } from "react";
 import ChatMessage from "./ChatMessage";
-const TextBox = () => {
+import './TextBox.css';
+const TextBox = ({chatMessages, setChatMessages}) => {
+
+    const [inputText, setInputText] = useState('');
+
+
+    function processMessage(event){
+        // console.log(event.target.value);
+        setInputText(event.target.value)
+    }
+
+    function sendMessage(){  
+        const newMessage = [
+            ...chatMessages, 
+            {
+                message: inputText,
+                sender: 'user',
+                id: crypto.randomUUID()
+            }
+            ];
+        setChatMessages(newMessage);
+
+        //message from bot
+        const botResponse = "How can i help?";
+
+        setChatMessages([...newMessage, {
+            message: botResponse,
+            sender: 'bot',
+            id: crypto.randomUUID()
+        }]);
+
+        console.log(chatMessages);
+        setInputText('');
+    }
+
+    const chats = chatMessages.map(
+        m => <ChatMessage key={m.id} message={m.message} sender={m.sender}/>)
 
     return (
-        <>
-            <input placeholder="Ask me anything" size="30" />
-            <button>Send</button>
-            <ChatMessage message="Hello ChatBot" sender="user" />
-            <ChatMessage message="Hello How can i help you today" sender="chatBot" />
-            <ChatMessage message="What is the date" sender="user" />
-            <ChatMessage message="Today is blah blah blah" sender="chatBot" />
-
-        </>
+        <div className="chat-input-container">
+            <input 
+                className="input-box"
+                onChange={processMessage} 
+                value={inputText}
+                placeholder="Ask me anything" 
+                size="30" 
+                />
+            <button className="send-button" onClick={sendMessage}>Send</button>
+            {chats}
+        </div>
     );
 
 }
